@@ -1,0 +1,5 @@
+source setup.sh 
+./xmosdfu --listdevices
+
+source setup.sh 
+./xmosdfu --download /Users/jseaber/Downloads/Atom_DAC_Plus-v184-LockedVolume.bin
