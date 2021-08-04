@@ -7,6 +7,10 @@ https://www.xmos.com/developer/software/usbaudio
 1. Install a g++ compiler: http://www.edparrish.net/common/macgpp.php
 2. Open a terminal in the same folder as the extracted files in step 1, then run the following command to compile. You may ignore the 6 warnings.
 ```
+make -f Makefile.OSX all
+```
+3. Make sure your DAC is connected by USB, then run the following command to verify the connection and check the current firmware version. Your DAC will appear as “VID = 0x20b1”. *Only 1 DAC may be plugged in at a time!*:
+```
 source setup.sh 
 ./xmosdfu --listdevices
 ```
