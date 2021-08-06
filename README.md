@@ -22,7 +22,7 @@ source setup.sh
 
 # Usage in Ubuntu 20.0.4
 
-1. Install usblib:
+1. Install libusb:
 ```
 sudo apt-get install libusb-1.0-0-dev
 ```
