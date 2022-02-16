@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+// CHOOSE LOCATION OF LIBUSB
+// libusb location in macOS is:         "libusb.h"
+#include "libusb.h"
 
-// libusb location in Ubuntu 20.0.4
-#if __has_include(__has_include(<libusb-1.0/libusb.h>)
-# include <libusb-1.0/libusb.h>
-#endif
+// libusb location in Ubuntu 20.0.4 is: <libusb-1.0/libusb.h>
+//#include <libusb-1.0/libusb.h>
 
-// lubusb location in macOS
-#if __has_include(__has_include("libusb.h")
-# include "libusb.h"
-#endif
+// End user defined variables.
+// --------------------------------------------
 
 /* the device's vendor and product id */
 #define XMOS_VID 0x20b1
