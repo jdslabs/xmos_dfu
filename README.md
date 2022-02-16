@@ -49,6 +49,5 @@ sudo ./xmosdfu --listdevices
 ```
 4. To flash new firmware, download the desired file, then run the commands below, one line at a time. You will need to edit the command to reflect the full path of your downloaded firmware file: select the downloaded file in Finder, then right click on its path in the bottom of the window and choose Copy <filename> as Pathname:  
 ```
-sudo source setup.sh 
-sudo ./xmosdfu --download /Users/jseaber/Downloads/Atom_DAC_Plus-v184-LockedVolume.bin
+sudo ./xmosdfu --download /Home/jseaber/Downloads/Atom_DAC_Plus-v184-LockedVolume.bin
 ```
