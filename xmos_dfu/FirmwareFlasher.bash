@@ -16,7 +16,7 @@ pause(){
 
 listfirmwares(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --listdevices
 	echo
@@ -95,7 +95,7 @@ read_atom(){
 
 flash_166(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/el-dac-ii/EL_DAC_II_v166.bin
 	echo
@@ -104,7 +104,7 @@ flash_166(){
 
 flash_167(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/el-dac-ii/EL-DAC-II-167-Vol-Lock.bin
 	echo
@@ -113,7 +113,7 @@ flash_167(){
 
 flash_139(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/element-ii/Element_II_v139.bin
 	echo
@@ -122,7 +122,7 @@ flash_139(){
 
 flash_13A(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/element-ii/Element-II-v13A.bin
 	echo
@@ -131,7 +131,7 @@ flash_13A(){
 
 flash_189(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/atom-dac-plus/Atom-DAC-Plus-v189.bin
 	echo
@@ -140,7 +140,7 @@ flash_189(){
 
 flash_18A(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/atom-dac-plus/atom-dac-plus-v18A.bin
 	echo
@@ -149,7 +149,7 @@ flash_18A(){
 
 flash_18B(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/atom-dac-plus/atom-dac-plus-v18B.bin
 	echo
@@ -158,7 +158,7 @@ flash_18B(){
 
 flash_184(){
 	clear
-	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu_osx/
+	cd /Users/jseaber/Documents/GitHub/xmos_dfu/xmos_dfu/
 	source setup.sh
 	./xmosdfu --download /Users/jseaber/Desktop/firmwares/bins/atom-dac-plus/Atom_DAC_Plus-v184-LockedVolume.bin
 	echo
