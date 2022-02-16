@@ -1,18 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <libusb-1.0/libusb.h>
+
+// libusb location in Ubuntu 20.0.4
+#if __has_include(__has_include(<libusb-1.0/libusb.h>)
+# include <libusb-1.0/libusb.h>
+#endif
+
+// lubusb location in macOS
+#if __has_include(__has_include("libusb.h")
+# include "libusb.h"
+#endif
 
 /* the device's vendor and product id */
 #define XMOS_VID 0x20b1
+#define THESYCON_VID 0x152A
 
 #define ATOMDAC_PID 0x30E1
 #define ELEMENTII_PID 0x30DA
 #define ELDACII_PID 0x30E0
+#define ELEMENTIII_PID 0x8885
+#define ELDACIIPLUS_PID 0x8886
 
 unsigned short pidList[] = {ATOMDAC_PID, 
                             ELEMENTII_PID,
-                            ELDACII_PID}; 
+                            ELDACII_PID,
+                            ELEMENTIII_PID,
+                            ELDACIIPLUS_PID}; 
 
 unsigned int XMOS_DFU_IF = 0;
 
@@ -54,7 +68,7 @@ static int find_xmos_device(unsigned int id, unsigned int list)
         libusb_get_device_descriptor(dev, &desc); 
         printf("VID = 0x%x, PID = 0x%x, Firmware Version: %x\n", desc.idVendor, desc.idProduct, desc.bcdDevice);
 
-        if(desc.idVendor == XMOS_VID)
+        if(desc.idVendor == XMOS_VID || desc.idVendor == THESYCON_VID)
         {
             for(int j = 0; j < sizeof(pidList)/sizeof(unsigned short); j++)
             {
@@ -339,7 +353,7 @@ int main(int argc, char **argv) {
   {
       if(!listdev)
       {
-        fprintf(stderr, "Could not find/open device\n");
+        fprintf(stderr, "Could not find/open an XMOS based device. Is the device connected, and did you use sudo?\n");
         return -1;
       }
       return 0;
@@ -364,30 +378,30 @@ int main(int argc, char **argv) {
   else if(!listdev)
   {
 
-    printf("Detaching device from application mode.\n");
+    printf("Detaching XMOS device from application mode.\n");
     xmos_dfu_resetintodfu(XMOS_DFU_IF);
 
     libusb_release_interface(devh, XMOS_DFU_IF);
     libusb_close(devh);
 
 
-    printf("Waiting for device to restart and enter DFU mode...\n");
+    printf("Waiting for XMOS device to restart and enter DFU mode...\n");
 
     // Wait for device to enter dfu mode and restart
-    system("sleep 4");
+    system("sleep 3");
 
     // NOW IN DFU APPLICATION MODE
 
     r = find_xmos_device(0, 0);
     if (r < 0) {
-      fprintf(stderr, "Could not find/open device\n");
+      fprintf(stderr, "Could not find/open DFU device\n");
       return -1;
     }
 
     r = libusb_claim_interface(devh, 0);
     if (r != 0) 
     {
-        fprintf(stderr, "Error claiming interface 0\n");
+        fprintf(stderr, "Error claiming DFU interface 0\n");
          
         switch(r)
         {
