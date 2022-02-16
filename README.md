@@ -14,14 +14,18 @@ https://www.xmos.com/developer/software/usbaudio
 ```
 make -f Makefile.OSX all
 ```
-3. Make sure your DAC is connected by USB, then run the following command to verify the connection and check the current firmware version. Your DAC will appear as “VID = 0x20b1” or "VID = 0x152A. *Only 1 DAC may be plugged in at a time!*:
+
+3. In terminal, run the command:
 ```
 source setup.sh 
+```
+
+4. Make sure your DAC is connected by USB, then run the following command to verify the connection and check the current firmware version. Your DAC will appear as “VID = 0x20b1” or "VID = 0x152A. *Only 1 DAC may be plugged in at a time!*:
+```
 ./xmosdfu --listdevices
 ```
-3. To flash new firmware, download the desired file, then run the commands below, one line at a time. You will need to edit the command to reflect the full path of your downloaded firmware file: select the downloaded file in Finder, then right click on its path in the bottom of the window and choose Copy <filename> as Pathname:
+5. To flash new firmware, download the desired file, then run the commands below. You will need to edit the command to reflect the full path of your downloaded firmware file: select the downloaded file in Finder, then right click on its path in the bottom of the window and choose Copy <filename> as Pathname:
 ```
-sudo source setup.sh 
 sudo ./xmosdfu --download /Users/jseaber/Downloads/Atom_DAC_Plus-v184-LockedVolume.bin
 ```
 
@@ -34,10 +38,14 @@ sudo ./xmosdfu --download /Users/jseaber/Downloads/Atom_DAC_Plus-v184-LockedVolu
 ```
 make -f Makefile.Linux all
 ```
-3. Make sure your DAC is connected by USB, then run the following command to verify the connection and check the current firmware version. Your DAC will appear as “VID = 0x20b1” or "VID = 0x152A. *Only 1 DAC may be plugged in at a time!*:
+3. In terminal, run the command:
 ```
-sudo source setup.sh 
-./xmosdfu --listdevices
+source setup.sh 
+```
+
+4. Make sure your DAC is connected by USB, then run the following command to verify the connection and check the current firmware version. Your DAC will appear as “VID = 0x20b1” or "VID = 0x152A. *Only 1 DAC may be plugged in at a time!*:
+```
+sudo ./xmosdfu --listdevices
 ```
 4. To flash new firmware, download the desired file, then run the commands below, one line at a time. You will need to edit the command to reflect the full path of your downloaded firmware file: select the downloaded file in Finder, then right click on its path in the bottom of the window and choose Copy <filename> as Pathname:  
 ```
