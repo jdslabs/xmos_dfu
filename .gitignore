@@ -1,0 +1,8 @@
+*.swp
+.build/
+.metadata/
+.settings/
+bin/
+.DS_Store
+*.xe
+*.bin
