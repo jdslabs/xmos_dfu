@@ -9,7 +9,7 @@
   A copy of the original AS-IS [License](https://github.com/jdslabs/xmos_dfu/blob/main/LICENSE.txt) is included within this repository.
 
 # Usage in macOS
-
+This process has been tested under Big Sur on Intel based Macs. You may need to alter the Makefile and 
 ## Prerequisites
 - Install XCode Command Line Tools, from a command line: `xcode-select --install`
 - Install [Homebrew](https://brew.sh/)
@@ -30,7 +30,7 @@ source setup.sh
 ./xmosdfu --listdevices
 ```
 
-4. To flash new firmware, download the [desired .bin file](https://jdslabs.com/support/drivers/), then run the command below. *Only 1 DAC may be plugged in at a time!*
+4. To flash new firmware, download the [desired .bin file](https://blog.jdslabs.com/2020/08/custom-firmware-builds-for-element-ii-el-dac-ii-and-atom-dac/), then run the command below. *Only 1 DAC may be plugged in at a time!*
 You will need to edit the path to reflect the full path of your downloaded firmware file (tip: select the downloaded file in Finder, then right click on its path in the bottom of the window and choose Copy <filename> as Pathname):
 ```
 sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
@@ -53,7 +53,7 @@ source setup.sh
 ```
 sudo ./xmosdfu --listdevices
 ```
-4. To flash new firmware, download the desired file, then run the command below as `sudo`. *Only 1 DAC may be plugged in at a time!*
+4. To flash new firmware, download the [desired .bin file](https://blog.jdslabs.com/2020/08/custom-firmware-builds-for-element-ii-el-dac-ii-and-atom-dac/), then run the command below as `sudo`. *Only 1 DAC may be plugged in at a time!*
 You will need to edit the path to reflect the full path of your downloaded firmware file:  
 ```
 sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
