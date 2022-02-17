@@ -1,15 +1,27 @@
+/* 
+  This script was originally distributed as a component of the XMOS USB Audio 2.0 Reference Software Version 6.15.2, and has been modified to
+  facilitate firmware updates via DFU mode for the following XMOS based JDS Labs, Inc. devices:
+    - Atom DAC(+)
+    - EL DAC II(+)
+    - Element II
+    - Element III
+
+  A copy of the original AS-IS (MIT) License is included in the source repository at:
+  https://github.com/jdslabs/xmos_dfu/blob/main/LICENSE.txt
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// CHOOSE LOCATION OF LIBUSB
-// libusb location in macOS is:         "libusb.h"
+
+/* libusb 1.0.0-dev must be installed. Please see README */
+#ifdef __linux
+  #include <libusb-1.0/libusb.h>
+#endif
+
+#ifdef __APPLE__
 #include "libusb.h"
-
-// libusb location in Ubuntu 20.0.4 is: <libusb-1.0/libusb.h>
-//#include <libusb-1.0/libusb.h>
-
-// End user defined variables.
-// --------------------------------------------
+#endif
 
 /* the device's vendor and product id */
 #define XMOS_VID 0x20b1
