@@ -15,9 +15,15 @@
 - Install [Homebrew](https://brew.sh/)
 - Install libusb: `brew install libusb`
 
-1. Open a terminal in the `xmos_dfu` folder, then compile: `make -f Makefile.OSX all`. Warnings may be ignored:
+1. Open a terminal in the `xmos_dfu` folder and compile Makefile.OSX. Warnings may be ignored:
+```
+make -f Makefile.OSX all
+```
 
-2. Next, run: `source setup.sh `
+2. Next, run:
+```
+source setup.sh 
+```
 
 3. Make sure your DAC is connected by USB, then run the following command to verify the connection and current firmware version. Your DAC will appear as “VID = 0x20b1” or "VID = 0x152A:
 ```
@@ -34,7 +40,7 @@ sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
 ## Prerequisites
 - Install libusb: `sudo apt-get install libusb-1.0-0-dev`
 
-1. Open a terminal in the `xmos_dfu` folder, then run the following command to compile. Warnings may be ignored:
+1. Open a terminal in the `xmos_dfu` folder and compile Makefile.Linux. Warnings may be ignored:
 ```
 make -f Makefile.Linux all
 ```
