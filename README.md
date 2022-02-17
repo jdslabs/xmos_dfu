@@ -12,8 +12,12 @@ This script was originally distributed as a component of the [XMOS USB Audio 2.0
 ## General Knowledge
 - This script only supports the USB devices listed above. Only connect one (1) JDS Labs DAC at a time!
 - A _direct_ USB connection is required. USB hubs are known to prevent DFU communication.
-- M1 based Macs: See #2
+- M1 based Macs: See [#2]()
 
+## WARNING
+This command line tool only checks for a valid JDS Labs USB Vendor and Product ID before loading firmware to your DAC. It does *not* check the .bin file you supply, nor can it check that the DAC matches the .bin file you provide. Thus, triple check that you are loading the right firmware for the right model!
+
+In the event that you accidentally load firmware for the wrong JDS Labs DAC, you can normally recover by flashing the intended firmware. If not, please reach out to jdslabs.com/support
 
 # Usage in macOS
 This process has been tested under Big Sur on Intel based Macs. You may need to alter the Makefile and 
@@ -22,6 +26,7 @@ This process has been tested under Big Sur on Intel based Macs. You may need to 
 - Install [Homebrew](https://brew.sh/)
 - Install libusb: `brew install libusb`
 
+## Loading Firmware in macOS 
 1. Open a terminal in the `xmos_dfu` folder and compile Makefile.OSX. Warnings may be ignored:
 ```
 make -f Makefile.OSX all
@@ -46,6 +51,8 @@ sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
 # Usage in Ubuntu 20.0.4
 ## Prerequisites
 - Install libusb: `sudo apt-get install libusb-1.0-0-dev`
+
+## Loading Firmware in Ubuntu
 
 1. Open a terminal in the `xmos_dfu` folder and compile Makefile.Linux. Warnings may be ignored:
 ```
