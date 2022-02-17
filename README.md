@@ -1,12 +1,19 @@
 # DFU Loader for XMOS based JDS Labs DACs
-  This script was originally distributed as a component of the [XMOS USB Audio 2.0 Reference Software](http://www.xmos.com/products/development-kits/usbaudio2) Version 6.15.2, and has been modified to
-  facilitate firmware updates via DFU mode for the following XMOS based JDS Labs, Inc. devices:
-    - Atom DAC(+)
-    - EL DAC II(+)
-    - Element II
-    - Element III
+This script was originally distributed as a component of the [XMOS USB Audio 2.0 Reference Software](http://www.xmos.com/products/development-kits/usbaudio2) Version 6.15.2, and has been modified to facilitate firmware updates via DFU mode for the following XMOS based JDS Labs, Inc. devices:
 
+- Atom DAC(+)
+- EL DAC II(+)
+- Element II
+- Element III
+
+## License
   A copy of the original AS-IS [License](https://github.com/jdslabs/xmos_dfu/blob/main/LICENSE.txt) is included within this repository.
+
+## General Knowledge
+- This script only supports the USB devices listed above. Only connect one (1) JDS Labs DAC at a time!
+- A _direct_ USB connection is required. USB hubs are known to prevent DFU communication.
+- M1 based Macs: See #2
+
 
 # Usage in macOS
 This process has been tested under Big Sur on Intel based Macs. You may need to alter the Makefile and 
