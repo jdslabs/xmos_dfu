@@ -10,9 +10,10 @@ This script was originally distributed as a component of the [XMOS USB Audio 2.0
   A copy of the original AS-IS [License](https://github.com/jdslabs/xmos_dfu/blob/main/LICENSE.txt) is included within this repository.
 
 ## General Knowledge
-- This script only supports the USB devices listed above. Only connect one (1) JDS Labs DAC at a time!
-- A _direct_ USB connection is required. USB hubs are known to prevent DFU communication.
+- A _direct_ connection to a USB 2.0/3.0 port is required. USB hubs and some Type C or USB 3.1 ports may prevent DFU communication.
 - M1 based Macs: See [#2](https://github.com/jdslabs/xmos_dfu/issues/2)
+- This script only supports the USB devices listed above. Only connect one (1) JDS Labs DAC at a time!
+- While this repository is customized for JDS Labs USB VID/PIDs, the `pidList[]` in `xmosdfu.cpp` can be modiified to suit any XMOS devices with DFU capability.
 
 ## WARNING
 This command line tool only checks for a valid JDS Labs USB Vendor and Product ID before loading firmware to your DAC. It does *not* check the .bin file you supply, nor can it check that the DAC matches the .bin file you provide. Thus, triple check that you are loading the right firmware for the right model!
