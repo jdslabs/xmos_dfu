@@ -160,18 +160,22 @@ static int find_xmos_device(unsigned int id, unsigned int list)
 
 int xmos_dfu_resetdevice(void) {
   libusb_control_transfer(devh, DFU_REQUEST_TO_DEV, XMOS_DFU_RESETDEVICE, 0, 0, NULL, 0, 0);
+  return 0;
 }
 
 int xmos_dfu_revertfactory(void) {
   libusb_control_transfer(devh, DFU_REQUEST_TO_DEV, XMOS_DFU_REVERTFACTORY, 0, 0, NULL, 0, 0);
+  return 0;
 }
 
 int xmos_dfu_resetintodfu(unsigned int interface) {
   libusb_control_transfer(devh, DFU_REQUEST_TO_DEV, XMOS_DFU_RESETINTODFU, 0, interface, NULL, 0, 0);
+  return 0;
 }
 
 int xmos_dfu_resetfromdfu(unsigned int interface) {
   libusb_control_transfer(devh, DFU_REQUEST_TO_DEV, XMOS_DFU_RESETFROMDFU, 0, interface, NULL, 0, 0);
+  return 0;
 }
 
 int dfu_detach(unsigned int interface, unsigned int timeout) {
@@ -268,7 +272,7 @@ int write_dfu_image(char *file) {
   num_blocks = image_size/block_size;
   remainder = image_size - (num_blocks * block_size);
 
-  printf("... Downloading image (%s) to device\n", file);
+  printf("... Sending image (%s) to device\n", file);
  
   dfuBlockCount = 0; 
 
@@ -291,7 +295,7 @@ int write_dfu_image(char *file) {
   dfu_download(0, 0, 0, NULL);
   dfu_getStatus(0, &dfuState, &timeout, &nextDfuState, &strIndex);
 
-  printf("... Download complete\n");
+  printf("... Firmware update complete\n");
 
   return 0;
 }
@@ -339,7 +343,7 @@ int main(int argc, char **argv) {
   char *firmware_filename = NULL;
 
   if (argc < 2) {
-    fprintf(stderr, "No options passed to dfu application\n");
+    fprintf(stderr, "No options passed to DFU application\n");
     return -1;
   }
 
@@ -392,7 +396,7 @@ int main(int argc, char **argv) {
   {
       if(!listdev)
       {
-        fprintf(stderr, "Could not find/open an XMOS based device. Is the device connected, and did you use sudo?\n");
+        fprintf(stderr, "Could not find/open an XMOS based device. Is the device is listed above, and did you use sudo?\n");
         return -1;
       }
       return 0;
@@ -473,7 +477,7 @@ int main(int argc, char **argv) {
     read_dfu_image(firmware_filename);
     xmos_dfu_resetfromdfu(XMOS_DFU_IF);
   } else if (revert) {
-    printf("... Reverting device to factory image\n");
+    printf("... Reverting DAC to factory image\n");
     xmos_dfu_revertfactory(); 
     // Give device time to revert firmware
     system("sleep 2");
@@ -483,7 +487,7 @@ int main(int argc, char **argv) {
     xmos_dfu_resetfromdfu(XMOS_DFU_IF);
   }
 
-  printf("... Returning device to application mode\n");
+  printf("... Returning DAC to application mode\n");
 }
 // END OF DFU APPLICATION MODE
 
