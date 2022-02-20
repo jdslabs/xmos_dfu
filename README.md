@@ -28,9 +28,16 @@ This process has been tested under Big Sur on Intel based Macs.
 - Install libusb: `brew install libusb`
 
 ## Loading Firmware in macOS 
-1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile Makefile.OSX. Warnings may be ignored:
+1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile the Makefile. Warnings may be ignored.
+
+For older Intel based Macs:
 ```
-make -f Makefile.OSX all
+make -f Makefile mac
+```
+
+Or for newer M1 based Macs: 
+```
+make -f Makefile mac-m1
 ```
 
 2. Next, run:
@@ -57,7 +64,7 @@ sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
 
 1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile Makefile.Linux. Warnings may be ignored:
 ```
-make -f Makefile.Linux all
+make -f Makefile linux
 ```
 2. Next, run:
 ```
