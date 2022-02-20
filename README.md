@@ -30,11 +30,11 @@ This process has been tested under Big Sur on Intel based Macs.
 ## Loading Firmware in macOS 
 1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile the Makefile using the appropriate target for your system. Warnings may be ignored.
 
-### Intel based Macs:
+_Intel based Macs:_
 ```
 make -f Makefile mac
 ```
-### M1 based Macs:
+_### _M1 based Macs:_
 ```
 make -f Makefile mac-m1
 ```
