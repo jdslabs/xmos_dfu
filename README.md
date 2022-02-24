@@ -51,7 +51,7 @@ source setup.sh
 4. To flash new firmware, download the [desired .bin file](https://blog.jdslabs.com/2020/08/custom-firmware-builds-for-element-ii-el-dac-ii-and-atom-dac/), then run the command below. *Only 1 DAC may be plugged in at a time!*
 You will need to edit the path to reflect the full path of your downloaded firmware file (tip: select the downloaded file in Finder, then right click on its path in the bottom of the window and choose Copy <filename> as Pathname):
 ```
-sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
+sudo ./xmosdfu --download "/edit/this/path/Atom_DAC_Plus-v184.bin"
 ```
 
 # Usage in Ubuntu 20.0.4
@@ -76,5 +76,5 @@ sudo ./xmosdfu --listdevices
 4. To flash new firmware, download the [desired .bin file](https://blog.jdslabs.com/2020/08/custom-firmware-builds-for-element-ii-el-dac-ii-and-atom-dac/), then run the command below as `sudo`. *Only 1 DAC may be plugged in at a time!*
 You will need to edit the path to reflect the full path of your downloaded firmware file:  
 ```
-sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
+sudo ./xmosdfu --download "/edit/this/path/Atom_DAC_Plus-v184.bin"
 ```
