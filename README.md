@@ -21,18 +21,23 @@ This command line tool only checks for a valid JDS Labs USB Vendor and Product I
 In the event that you accidentally load firmware for the wrong JDS Labs DAC, you can normally recover by flashing the intended firmware. If not, please reach out to jdslabs.com/support
 
 # Usage in macOS
-This process has been tested under Big Sur on Intel based Macs.
+This process has been tested under Big Sur and Monterey on both Intel and M1 based Macs.
 ## Prerequisites
-- Install XCode Command Line Tools, from a command line: `xcode-select --install`
-- Install [Homebrew](https://brew.sh/)
+- Install XCode Command Line Tools from the App Store, or from a command line: `xcode-select --install`
+- Install [Homebrew](https://brew.sh/). Make sure to run commands presented towards the end of installation to add Homebrew to your PATH.
 - Install libusb: `brew install libusb`
 
 ## Loading Firmware in macOS 
-1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile Makefile.OSX. Warnings may be ignored:
-```
-make -f Makefile.OSX all
-```
+1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile the Makefile using the appropriate target for your system. Warnings may be ignored.
 
+#### Intel based Macs:
+```
+make -f Makefile mac
+```
+#### M1 based Macs:
+```
+make -f Makefile mac-m1
+```
 2. Next, run:
 ```
 source setup.sh 
@@ -57,7 +62,7 @@ sudo ./xmosdfu --download /edit/this/path/Atom_DAC_Plus-v184-LockedVolume.bin
 
 1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile Makefile.Linux. Warnings may be ignored:
 ```
-make -f Makefile.Linux all
+make -f Makefile linux
 ```
 2. Next, run:
 ```
