@@ -21,10 +21,10 @@ This command line tool only checks for a valid JDS Labs USB Vendor and Product I
 In the event that you accidentally load firmware for the wrong JDS Labs DAC, you can normally recover by flashing the intended firmware. If not, please reach out to jdslabs.com/support
 
 # Usage in macOS
-This process has been tested under Big Sur on Intel based Macs.
+This process has been tested under Big Sur and Monterey on both Intel and M1 based Macs.
 ## Prerequisites
-- Install XCode Command Line Tools, from a command line: `xcode-select --install`
-- Install [Homebrew](https://brew.sh/)
+- Install XCode Command Line Tools from the App Store, or from a command line: `xcode-select --install`
+- Install [Homebrew](https://brew.sh/). Make sure to run commands presented towards the end of installation to add Homebrew to your PATH.
 - Install libusb: `brew install libusb`
 
 ## Loading Firmware in macOS 
