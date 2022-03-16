@@ -11,7 +11,6 @@ This script was originally distributed as a component of the [XMOS USB Audio 2.0
 
 ## General Knowledge
 - A _direct_ connection to a USB 2.0/3.0 port is required. USB hubs and some Type C or USB 3.1 ports may prevent DFU communication.
-- M1 based Macs: See [#2](https://github.com/jdslabs/xmos_dfu/issues/2)
 - This script only supports the USB devices listed above. Only connect one (1) JDS Labs DAC at a time!
 - While this repository is customized for JDS Labs USB VID/PIDs, the `pidList[]` in `xmosdfu.cpp` can be modiified to suit any XMOS devices with DFU capability.
 
