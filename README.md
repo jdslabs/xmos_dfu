@@ -21,6 +21,7 @@ In the event that you accidentally load firmware for the wrong JDS Labs DAC, you
 
 # Usage in macOS
 This process has been tested under Big Sur and Monterey on both Intel and M1 based Macs.
+For Monterey, please see #4
 ## Prerequisites
 - Install XCode Command Line Tools from the App Store, or from a command line: `xcode-select --install`
 - Install [Homebrew](https://brew.sh/). Make sure to run commands presented towards the end of installation to add Homebrew to your PATH.
