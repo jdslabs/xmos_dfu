@@ -458,7 +458,7 @@ int main(int argc, char **argv) {
                 printf("The device has been disconnected\n");
                 break;
             case LIBUSB_ERROR_ACCESS:
-                printf("Access denied\n");
+                printf("LIBUSB_ERROR_ACCESS: Access denied. Try another USB port or reboot?\n");
                 break;
             default:
                 printf("Unknown error code:  %d\n", r);
@@ -495,5 +495,5 @@ int main(int argc, char **argv) {
   libusb_close(devh);
   libusb_exit(NULL);
 
-  return true;
+  return 1;
 }
