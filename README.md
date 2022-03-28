@@ -40,6 +40,8 @@ make -f Makefile mac-m1
 ```
 2. Next, run:
 ```
+chmod +x setup.sh 
+chmod +x xmosdfu
 source setup.sh 
 ```
 
