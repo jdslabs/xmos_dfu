@@ -60,12 +60,14 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 #define ELDACII_PID 0x30E0
 #define ELEMENTIII_PID 0x8885
 #define ELDACIIPLUS_PID 0x8886
+#define ELDACIIPLUSBal_PID 0x8889
 
 unsigned short pidList[] = {ATOMDAC_PID, 
                             ELEMENTII_PID,
                             ELDACII_PID,
                             ELEMENTIII_PID,
-                            ELDACIIPLUS_PID}; 
+                            ELDACIIPLUS_PID,
+                            ELDACIIPLUSBal_PID}; 
 
 unsigned int XMOS_DFU_IF = 0;
 
