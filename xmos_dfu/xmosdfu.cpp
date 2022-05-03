@@ -325,7 +325,7 @@ int read_dfu_image(char *file) {
     block_count++;
   }
 
-  fclose(outFile);
+  return fclose(outFile);
 }
 
 int main(int argc, char **argv) {
