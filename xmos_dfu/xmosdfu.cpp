@@ -55,6 +55,7 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 #define XMOS_VID 0x20b1
 #define THESYCON_VID 0x152A
 
+#define ATOMDAC2_PID 0x88E8
 #define ATOMDAC_PID 0x30E1
 #define ELEMENTII_PID 0x30DA
 #define ELDACII_PID 0x30E0
@@ -62,7 +63,8 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 #define ELDACIIPLUS_PID 0x8886
 #define ELDACIIPLUSBal_PID 0x8889
 
-unsigned short pidList[] = {ATOMDAC_PID, 
+unsigned short pidList[] = {ATOMDAC2_PID,
+                            ATOMDAC_PID, 
                             ELEMENTII_PID,
                             ELDACII_PID,
                             ELEMENTIII_PID,
