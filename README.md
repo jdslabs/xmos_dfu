@@ -38,6 +38,10 @@ make -f Makefile mac
 ```
 make -f Makefile mac-m1
 ```
+#### M1 based Macs running MacOS Sonoma:
+```
+make -f Makefile mac-sonoma
+```
 2. Next, run:
 ```
 chmod +x setup.sh 
