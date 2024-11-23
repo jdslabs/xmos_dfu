@@ -57,6 +57,8 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 
 #define ATOMDAC2_PID 0x88E8
 #define ATOMDAC_PID 0x30E1
+#define EL4_PID 0x88fa
+#define EL4_DFU_PID 0x88fc
 #define ELEMENTII_PID 0x30DA
 #define ELDACII_PID 0x30E0
 #define ELEMENTIII_PID 0x8885
@@ -64,7 +66,9 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 #define ELDACIIPLUSBal_PID 0x8889
 
 unsigned short pidList[] = {ATOMDAC2_PID,
-                            ATOMDAC_PID, 
+                            ATOMDAC_PID,
+                            EL4_PID,
+                            EL4_DFU_PID,
                             ELEMENTII_PID,
                             ELDACII_PID,
                             ELEMENTIII_PID,
