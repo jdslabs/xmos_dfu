@@ -1,0 +1,39 @@
+# generated from the PID list in xmos_dfu/xmosdfu.cpp
+# regexp:
+# ^#define\s+(\S+)\s+0x(\S+)$
+#
+# replacement string:
+# # $1
+# SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="$2",  TAG+="uaccess"
+# SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="$2",  TAG+="uaccess"
+#
+# This basically follows the logic from the code later on. If either vendor ID is found it looks for the productIDs.
+#
+
+# ATOMDAC2_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="88E8",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="88E8",  TAG+="uaccess"
+# ATOMDAC_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="30E1",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="30E1",  TAG+="uaccess"
+# EL4_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="88fa",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="88fa",  TAG+="uaccess"
+# EL4_DFU_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="88fc",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="88fc",  TAG+="uaccess"
+# ELEMENTII_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="30DA",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="30DA",  TAG+="uaccess"
+# ELDACII_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="30E0",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="30E0",  TAG+="uaccess"
+# ELEMENTIII_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="8885",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="8885",  TAG+="uaccess"
+# ELDACIIPLUS_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="8886",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="8886",  TAG+="uaccess"
+# ELDACIIPLUSBal_PID
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="20b1", ATTRS{idProduct}=="8889",  TAG+="uaccess"
+SUBSYSTEM=="usb",    ATTRS{idVendor}=="152A", ATTRS{idProduct}=="8889",  TAG+="uaccess"
