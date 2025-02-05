@@ -30,18 +30,11 @@ For Monterey, please see #4
 ## Loading Firmware in macOS 
 1. Open a terminal in the `/xmos_dfu/xmos_dfu` folder and compile the Makefile using the appropriate target for your system. Warnings may be ignored.
 
-#### Intel based Macs:
-```
+#### Macs (Intel or Apple Silicon):
+```sh
 make -f Makefile mac
 ```
-#### M1 based Macs:
-```
-make -f Makefile mac-m1
-```
-#### M1 based Macs running MacOS Sonoma:
-```
-make -f Makefile mac-sonoma
-```
+
 2. Next, run:
 ```
 chmod +x setup.sh 
