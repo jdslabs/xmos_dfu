@@ -5,6 +5,7 @@
     - EL DAC II(+)
     - Element II
     - Element III
+    - Element IV
 
   A copy of the original AS-IS (MIT) License, found below, is also included in the source repository: 
   https://github.com/jdslabs/xmos_dfu/blob/main/LICENSE.txt
@@ -41,6 +42,7 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 /* libusb 1.0.0-dev must be installed. Please see README */
 #ifdef __linux
@@ -97,6 +99,11 @@ unsigned int XMOS_DFU_IF = 0;
 #define XMOS_DFU_SAVESTATE   		0xf5
 #define XMOS_DFU_RESTORESTATE   	0xf6
 
+// At the top of the file, add color definitions
+#define COLOR_GREEN "\033[1;32m"
+#define COLOR_BLUE "\033[38;5;33m"
+#define COLOR_RESET "\033[0m"
+
 static libusb_device_handle *devh = NULL;
 
 static int find_xmos_device(unsigned int id, unsigned int list) 
@@ -112,8 +119,7 @@ static int find_xmos_device(unsigned int id, unsigned int list)
     {
         int foundDev = 0;
         struct libusb_device_descriptor desc;
-        libusb_get_device_descriptor(dev, &desc); 
-        printf("VID = 0x%x, PID = 0x%x, Firmware Version: %x\n", desc.idVendor, desc.idProduct, desc.bcdDevice);
+        libusb_get_device_descriptor(dev, &desc);
 
         if(desc.idVendor == XMOS_VID || desc.idVendor == THESYCON_VID)
         {
@@ -127,24 +133,41 @@ static int find_xmos_device(unsigned int id, unsigned int list)
             }
         }
 
-        if (foundDev)
+        if (foundDev || list)
         {
-            if (found == id) 
+            libusb_device_handle *handle;
+            if (libusb_open(dev, &handle) == 0) 
             {
-                if (libusb_open(dev, &devh) < 0) 
+                unsigned char product[256];
+                if (libusb_get_string_descriptor_ascii(handle, desc.iProduct, product, sizeof(product)) > 0) 
                 {
-                    return -1;
-                } 
+                    // Format firmware version from hex to decimal (1.2.0 format)
+                    int major = (desc.bcdDevice >> 8) & 0xFF;
+                    int minor = (desc.bcdDevice >> 4) & 0x0F;
+                    int patch = desc.bcdDevice & 0x0F;
+                    
+                    printf("- VID: 0x%x, PID: 0x%x | %s - Firmware v%d.%d.%d\n", 
+                           desc.idVendor, desc.idProduct, product, major, minor, patch);
+                }
                 else 
                 {
+                    printf("- VID: 0x%x, PID: 0x%x | Unknown Device - Firmware v%x\n", 
+                           desc.idVendor, desc.idProduct, desc.bcdDevice);
+                }
+                
+                if (foundDev && found == id)
+                {
+                    devh = handle;
                     libusb_config_descriptor *config_desc = NULL;
-                    libusb_get_active_config_descriptor(dev, &config_desc); 
+                    libusb_get_active_config_descriptor(dev, &config_desc);
                     if (config_desc != NULL) 
                     {
                         for (int j = 0; j < config_desc->bNumInterfaces; j++) 
                         {
-                            const libusb_interface_descriptor *inter_desc = ((libusb_interface *)&config_desc->interface[j])->altsetting;
-                            if (inter_desc->bInterfaceClass == 0xFE && inter_desc->bInterfaceSubClass == 0x1) 
+                            const libusb_interface_descriptor *inter_desc = 
+                                ((libusb_interface *)&config_desc->interface[j])->altsetting;
+                            if (inter_desc->bInterfaceClass == 0xFE && 
+                                inter_desc->bInterfaceSubClass == 0x1) 
                             {
                                 XMOS_DFU_IF = j;
                             } 
@@ -154,10 +177,15 @@ static int find_xmos_device(unsigned int id, unsigned int list)
                     {
                         XMOS_DFU_IF = 0;
                     }
+                    break;
                 }
-                break;
+                else
+                {
+                    libusb_close(handle);
+                }
+                
+                if (foundDev) found++;
             }
-            found++;
         }
     }
 
@@ -281,8 +309,14 @@ int write_dfu_image(char *file) {
   remainder = image_size - (num_blocks * block_size);
 
   printf("... Sending image (%s) to device\n", file);
+  printf("[%s", COLOR_BLUE);  // Use BLUE for progress bar
+  fflush(stdout);
  
-  dfuBlockCount = 0; 
+  dfuBlockCount = 0;
+  
+  // Calculate progress bar width
+  const int progress_width = 50;
+  int last_percent = -1;
 
   for (i = 0; i < num_blocks; i++) {
     memset(block_data, 0x0, block_size);
@@ -290,6 +324,19 @@ int write_dfu_image(char *file) {
     dfu_download(0, dfuBlockCount, block_size, block_data);
     dfu_getStatus(0, &dfuState, &timeout, &nextDfuState, &strIndex);
     dfuBlockCount++;
+
+    // Update progress bar
+    int percent = (i * 100) / num_blocks;
+    if (percent != last_percent) {
+      int num_chars = (percent * progress_width) / 100;
+      while (last_percent < percent) {
+        if (last_percent % 2 == 0) {
+          printf("#");
+          fflush(stdout);
+        }
+        last_percent++;
+      }
+    }
   }
 
   if (remainder) {
@@ -297,13 +344,36 @@ int write_dfu_image(char *file) {
     fread(block_data, 1, remainder, inFile);
     dfu_download(0, dfuBlockCount, block_size, block_data);
     dfu_getStatus(0, &dfuState, &timeout, &nextDfuState, &strIndex);
+    
+    // Fill the rest of the progress bar
+    while (last_percent < 100) {
+      if (last_percent % 2 == 0) {
+        printf("#");
+        fflush(stdout);
+      }
+      last_percent++;
+    }
   }
 
   // 0 length download terminates
   dfu_download(0, 0, 0, NULL);
   dfu_getStatus(0, &dfuState, &timeout, &nextDfuState, &strIndex);
 
-  printf("... Firmware update complete\n");
+  printf("%s", COLOR_RESET);  // Reset color after progress bar
+  printf("] 100%%\n");
+  
+  // Get current time
+  time_t now = time(NULL);
+  struct tm *t = localtime(&now);
+  char time_str[16];
+  strftime(time_str, sizeof(time_str), "%I:%M%p", t);
+  
+  // Convert to lowercase am/pm
+  for(char *p = time_str; *p; p++) {
+    if(*p >= 'A' && *p <= 'Z') *p |= 0x20;
+  }
+  
+  printf("... %sFirmware update complete @ %s%s\n", COLOR_GREEN, time_str, COLOR_RESET);
 
   return 0;
 }
@@ -496,12 +566,12 @@ int main(int argc, char **argv) {
   }
 
   printf("... Returning DAC to application mode\n");
-}
-// END OF DFU APPLICATION MODE
 
-  libusb_release_interface(devh, 0);
-  libusb_close(devh);
-  libusb_exit(NULL);
+} // END OF DFU APPLICATION MODE
 
-  return 1;
+libusb_release_interface(devh, 0);
+libusb_close(devh);
+libusb_exit(NULL);
+
+return 1;
 }
