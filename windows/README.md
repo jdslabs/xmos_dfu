@@ -59,7 +59,7 @@ However, a small number of devices have been found to fail to upgrade beyond `v1
 
 - Upgrade firmware through core.jdslabs.com using a macOS or Linux system.
 - Reach out to jdslabs.com/support and we will replace the flash IC for you. We'll cover shipping both ways.
-- Use this tool, which uses `libusb` instead of `WinUSB. This may or may not help.
+- Use this tool, which uses `libusb` instead of `WinUSB`. This may or may not help.
 
 ## Dependencies
 
