@@ -55,7 +55,7 @@ If your Element IV is running firmware older than v1.4.0, you **must** flash **v
 
 Firmware updates for Element IV are normally performed through [core.jdslabs.com](https://core.jdslabs.com), which updates your device directly from the browser. This works reliably on macOS, Linux, and the vast majority of Windows PCs.
 
-However, a small number of devices have been found to fail to upgrade beyond `v1.5.x`. This is believed to be a WinUSB driver limitation: some flash chips operate more slowly than others, leading to stalls and/or corrption in the upgrade slot. Firmware is designed to be failsafe: Your Element will boot to its write-protected factory version when corruption occurs in the upgarde slot. There are three possible solutions:
+However, a small number of devices have been found to fail to upgrade beyond `v1.5.x`. This is believed to be a WinUSB driver limitation: some flash chips operate more slowly than others, leading to stalls and/or corruption in the upgrade slot. Firmware is designed to be failsafe: Your Element will boot to its write-protected factory version when corruption occurs in the upgrade slot. There are three possible solutions:
 
 - Upgrade firmware through core.jdslabs.com using a macOS or Linux system.
 - Reach out to jdslabs.com/support and we will replace the flash IC for you. We'll cover shipping both ways.
