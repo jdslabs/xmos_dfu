@@ -78,8 +78,12 @@ DEALINGS WITH THE SOFTWARE OR DOCUMENTATION.
 #define ELEMENTIII_PID 0x8885
 #define ELDACIIPLUS_PID 0x8886
 #define ELDACIIPLUSBal_PID 0x8889
+#define ATOMDAC3_PID 0x8999
+#define COREI2S_PID 0x899B
 
-unsigned short pidList[] = {ATOMDAC2_PID,
+unsigned short pidList[] = {ATOMDAC3_PID,
+                            COREI2S_PID,
+                            ATOMDAC2_PID,
                             ATOMDAC_PID,
                             EL4_PID,
                             EL4_DFU_PID,
